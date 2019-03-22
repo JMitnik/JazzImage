@@ -18,11 +18,12 @@ collections:
       - {label: "Description", name: "description", widget: "text"}
       - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
-  - name: 'albums'
+  - name: 'gallery'
     label: 'Albums'
     folder: 'src/pages/gallery'
     create: true
     fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "gallery"}
         - { label: 'Title', name: 'title', widget: 'string' }
         - { label: 'Featured image', name: 'thumbnail', allow_multiple: false, widget: 'image', media_library: { config: { multiple: false } } }
         - { label: 'Photos', name: 'photos', widget: 'image', allow_multiple: true , media_library: { config: { multiple: true } } }

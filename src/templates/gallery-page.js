@@ -4,32 +4,14 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
 
-export const GalleryPageTemplate = ({ title, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
-
-  return (
-   <div>
-       Test
-   </div>
-  )
-}
-
-GalleryPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
-}
-
 const GalleryPage = ({ data }) => {
   const { markdownRemark: post } = data
 
   return (
     <Layout>
-      <GalleryPageTemplate
-        contentComponent={HTMLContent}
-        title={post.frontmatter.title}
-        content={post.html}
-      />
+      <div>
+          Test
+      </div>
     </Layout>
   )
 }
