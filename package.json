@@ -30,6 +30,9 @@
     "react-helmet": "^5.2.0",
     "uuid": "^3.2.1"
   },
+  "browserslist": [
+    "last 1 version"
+  ],
   "keywords": [
     "gatsby"
   ],
