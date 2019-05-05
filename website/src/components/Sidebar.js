@@ -1,8 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Sidebar = props => {
-    return <div />;
+const Sidebar = props => (
+  <div>
+    <div className="dog">{props.test}</div>
+  </div>
+);
+
+Sidebar.propTypes = {
+  test: PropTypes.string
 };
 
 Sidebar.propTypes = {};
