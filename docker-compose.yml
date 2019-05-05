@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    website:
+        build: ./website
+        ports:
+            - 9000:9000
+            - 8000:8000
+            - 80:80
+        env_file: .env
+        depends_on:
+            - cms
+        volumes:
+            - ./website/src:/app/src
+            - ./website/public:/app/public
+
+    cms:
+        build: ./cms
+        env_file: .env
+        ports:
+            - 1337:1337
+        volumes:
+            - ./cms:/usr/src/api
+        depends_on:
+            - db
+
+    db:
+        image: mongo
+        restart: unless-stopped
+        env_file: .env
+        environment:
+            - MONGO_INITDB_DATABASE=$DATABASE_NAME
+        ports:
+            - 27017:27017
+        volumes:
+            - /data/db
