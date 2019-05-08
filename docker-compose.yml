@@ -3,29 +3,29 @@ version: "3"
 services:
     website:
         build: ./website
+        container_name: jazzimage_website
         ports:
             - 9000:9000
             - 8000:8000
             - 80:80
         env_file: .env
-        depends_on:
-            - cms
+        command: ["/wait-for-it.sh", "cms:1337", "--", "/build.sh"]
         volumes:
             - ./website/src:/app/src
             - ./website/public:/app/public
 
     cms:
         build: ./cms
+        container_name: jazzimage_cms
         env_file: .env
         ports:
             - 1337:1337
         volumes:
             - ./cms:/usr/src/api
-        depends_on:
-            - db
 
     db:
         image: mongo
+        container_name: jazzimage_db
         restart: unless-stopped
         env_file: .env
         environment:

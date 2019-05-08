@@ -1,13 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const SidebarStyles = styled.div`
   position: fixed;
-  right: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #e4e4e4;
+  background: white;
+
+  .active {
+    font-weight: bold;
+  }
 
   ul {
     list-style: none;
+
+    a {
+      color: #444;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 24px;
+    }
   }
 `;
 
@@ -15,7 +36,16 @@ const Sidebar = props => (
   <div>
     <SidebarStyles>
       <ul>
-        <li>Home</li>
+        <li>
+          <Link to="/" activeClassName="active">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/albums" activeClassName="active">
+            Albums
+          </Link>
+        </li>
       </ul>
     </SidebarStyles>
   </div>

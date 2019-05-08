@@ -1,9 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Default Starter',
-    description:
-      'Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.',
-    author: '@gatsbyjs'
+    title: 'JazzImage',
+    description: 'Photographs, editing with a touch of Jazz by Arkady Mitnik.',
+    author: 'Arkady Mitnik'
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -14,6 +13,15 @@ module.exports = {
         path: `${__dirname}/src/images`
       }
     },
+    {
+      resolve: 'gatsby-source-strapi',
+      options: {
+        apiURL: `http://${process.env.API_URL}`,
+        queryLimit: 100, // Default to 0
+        contentTypes: ['album', 'user']
+      }
+    },
+    'gatsby-plugin-transition-link',
     'gatsby-transformer-sharp',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-sharp',

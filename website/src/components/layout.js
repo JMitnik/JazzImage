@@ -5,33 +5,48 @@ import Sidebar from './Sidebar';
 import Hero from './Hero';
 import styled from 'styled-components';
 
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyles = createGlobalStyle`
+    body, *, html {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+`;
+
 const LayoutStyles = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
+  /* grid-gap: 30px; */
+  overflow: hidden;
 `;
 
 const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
+  <div>
+    <StaticQuery
+      query={graphql`
+        query SiteTitleQuery {
+          site {
+            siteMetadata {
+              title
+            }
           }
         }
-      }
-    `}
-    render={data => (
-      <LayoutStyles>
-        <Sidebar />
+      `}
+      render={data => (
+        <LayoutStyles>
+          <Sidebar />
 
-        <div>
-          <main>{children}</main>
-          <footer>Test</footer>
-        </div>
-      </LayoutStyles>
-    )}
-  />
+          <div>
+            <main>{children}</main>
+            <footer />
+          </div>
+        </LayoutStyles>
+      )}
+    />
+    <GlobalStyles />
+  </div>
 );
 
 Layout.propTypes = {

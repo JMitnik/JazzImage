@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
+import { Link } from 'gatsby';
 
 const AlbumGalleryStyles = styled.div`
   display: grid;
@@ -54,12 +56,14 @@ const AlbumGallery = ({ albums }) => (
     <h3>Albums</h3>
 
     <AlbumGalleryStyles>
-      {albums.map(album => (
-        <Album key={album.id}>
-          <img src={album.thumbnailUrl} />
-          <div className="overlay">
-            <h4>{album.title}</h4>
-          </div>
+      {albums.map((album, index) => (
+        <Album key={index}>
+          <Link to={`/albums/${album.id}`}>
+            <Img fluid={album.coverPhoto.childImageSharp.fluid} />
+            <div className="overlay">
+              <h4>{album.Title}</h4>
+            </div>
+          </Link>
         </Album>
       ))}
     </AlbumGalleryStyles>

@@ -1,7 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import CameraIcon from '../images/camera-bordered.svg';
+// import CameraIcon from '../images/camera-bordered.svg';
 import HeroBG from '../images/hero-bg.jpg';
 
 const HeroStyles = styled.section`
@@ -22,12 +21,10 @@ const Heading = styled.h1`
   right: 24px;
 `;
 
-const Hero = props => (
+const Hero = () => (
   <HeroStyles>
     <Heading>JazzImage</Heading>
   </HeroStyles>
 );
-
-Hero.propTypes = {};
 
 export default Hero;
