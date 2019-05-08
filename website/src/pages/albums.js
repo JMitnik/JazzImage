@@ -1,5 +1,10 @@
-const path = require('path');
+import React from 'react';
 
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import AlbumGallery from '../components/AlbumGallery';
+
+// TODO: Import this from graphQL
 const ALBUMS = [
   {
     id: 1,
@@ -19,19 +24,10 @@ const ALBUMS = [
   }
 ];
 
-exports.createPages = ({ graphql, actions }) => {
-  const { createPage } = actions;
-  const albumTemplate = path.resolve('src/templates/album.js');
+const AlbumGalleryPage = () => (
+  <Layout>
+    <AlbumGallery albums={ALBUMS} />
+  </Layout>
+);
 
-  ALBUMS.forEach(album => {
-    const pagePath = `/albums/${album.title}/`;
-
-    createPage({
-      path: pagePath,
-      component: albumTemplate,
-      context: {
-        id: album.id
-      }
-    });
-  });
-};
+export default AlbumGalleryPage;
