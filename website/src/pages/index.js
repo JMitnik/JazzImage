@@ -9,7 +9,6 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Home" keywords={['gatsby', 'application', 'react']} />
     <Hero />
-    <Link to="/albums/">Go to albums</Link>
   </Layout>
 );
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
@@ -6,12 +6,13 @@ import SEO from '../components/seo';
 import AlbumGallery from '../components/AlbumGallery';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import Lightbox from '../components/Lightbox';
+import useLightbox from '../hooks/use-lightbox';
 
 const AlbumHeader = styled.header`
   display: grid;
   grid-template-columns: 1fr 3fr;
   min-height: 600px;
-  margin-top: ;
   padding-left: 24px;
 
   h2 {
@@ -37,8 +38,18 @@ const AlbumPage = ({ children, pageContext, data }) => {
 
   const album = data.allStrapiAlbum.nodes[0];
 
+  const { currentImage, setImage, nextImage, cancel, prevImage } = useLightbox(
+    album.photos
+  );
+
   return (
     <Layout>
+      <Lightbox
+        currentImage={currentImage}
+        nextImage={nextImage}
+        cancel={cancel}
+        prevImage={prevImage}
+      />
       <AlbumHeader>
         <div>
           <h2>{album.Title}</h2>
@@ -46,8 +57,12 @@ const AlbumPage = ({ children, pageContext, data }) => {
         <Img fluid={album.coverPhoto.childImageSharp.fluid} />
       </AlbumHeader>
       <AlbumStyles>
-        {album.photos.map(photo => (
-          <img key={photo.id} src={`http://localhost:1337/${photo.url}`} />
+        {album.photos.map((photo, index) => (
+          <img
+            onClick={() => setImage(index)}
+            key={photo.id}
+            src={`http://localhost:1337/${photo.url}`}
+          />
         ))}
       </AlbumStyles>
     </Layout>
@@ -72,7 +87,7 @@ export const query = graphql`
         }
         coverPhoto {
           childImageSharp {
-            fluid(maxWidth: 900, maxHeight: 500) {
+            fluid(maxWidth: 1400, maxHeight: 900) {
               tracedSVG
               srcSet
             }
