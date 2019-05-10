@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -8,6 +8,48 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Lightbox from '../components/Lightbox';
 import useLightbox from '../hooks/use-lightbox';
+
+const AlbumPage = ({ data }) => {
+  const album = data.allStrapiAlbum.nodes[0];
+
+  const { currentImage, setImage, nextImage, cancel, prevImage } = useLightbox(
+    album.photos
+  );
+
+  return (
+    <Layout>
+      <Lightbox
+        currentImage={currentImage}
+        nextImage={nextImage}
+        cancel={cancel}
+        prevImage={prevImage}
+      />
+      <AlbumHeader>
+        <div>
+          <button>
+            <Link to="/albums">Go back</Link>
+          </button>
+          <h2>{album.Title}</h2>
+        </div>
+        <Img fluid={album.coverPhoto.childImageSharp.fluid} />
+      </AlbumHeader>
+      <AlbumStyles>
+        {album.photos.map((photo, index) => (
+          <a key={photo.id} className="image-wrapper">
+            <img
+              onClick={() => setImage(index)}
+              src={`http://localhost:1337/${photo.url}`}
+            />
+          </a>
+        ))}
+      </AlbumStyles>
+    </Layout>
+  );
+};
+
+AlbumPage.propTypes = {
+  id: PropTypes.number
+};
 
 const AlbumHeader = styled.header`
   display: grid;
@@ -26,52 +68,18 @@ const AlbumStyles = styled.div`
   background: #f1f1f1;
   padding: 100px;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 50px;
+  grid-gap: 50px;
 
-  img {
+  .image-wrapper {
+    display: block;
     max-width: 100%;
   }
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
-
-const AlbumPage = ({ children, pageContext, data }) => {
-  const Dog = '1';
-
-  const album = data.allStrapiAlbum.nodes[0];
-
-  const { currentImage, setImage, nextImage, cancel, prevImage } = useLightbox(
-    album.photos
-  );
-
-  return (
-    <Layout>
-      <Lightbox
-        currentImage={currentImage}
-        nextImage={nextImage}
-        cancel={cancel}
-        prevImage={prevImage}
-      />
-      <AlbumHeader>
-        <div>
-          <h2>{album.Title}</h2>
-        </div>
-        <Img fluid={album.coverPhoto.childImageSharp.fluid} />
-      </AlbumHeader>
-      <AlbumStyles>
-        {album.photos.map((photo, index) => (
-          <img
-            onClick={() => setImage(index)}
-            key={photo.id}
-            src={`http://localhost:1337/${photo.url}`}
-          />
-        ))}
-      </AlbumStyles>
-    </Layout>
-  );
-};
-
-AlbumPage.propTypes = {
-  id: PropTypes.number
-};
 
 export default AlbumPage;
 export const query = graphql`

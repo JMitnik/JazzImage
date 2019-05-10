@@ -12,6 +12,11 @@ const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+        font-family: 'Lora', sans-serif;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Lora', sans-serif;
     }
 `;
 
@@ -24,6 +29,7 @@ const LayoutStyles = styled.div`
 
 const Layout = ({ children }) => (
   <div>
+    <style>@import url('https://fonts.googleapis.com/css?family=Lora');</style>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
