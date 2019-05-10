@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-// import CameraIcon from '../images/camera-bordered.svg';
-import HeroBG from '../images/hero-bg.jpg';
+import HeroBG from '../../images/hero-bg.jpg';
 
 const HeroStyles = styled.section`
   min-height: 100vh;
