@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar/Sidebar';
 import styled from 'styled-components';
 
 import { createGlobalStyle } from 'styled-components';
+import Footer from './Footer/Footer';
 
 const GlobalStyles = createGlobalStyle`
     body, *, html {
@@ -22,7 +23,6 @@ const GlobalStyles = createGlobalStyle`
 const LayoutStyles = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
-  min-height: 100vh;
 
   .main {
     overflow: auto;
@@ -59,7 +59,7 @@ const Layout = ({ children }) => (
 
           <div className="main">
             <main>{children}</main>
-            <footer />
+            <Footer />
           </div>
         </LayoutStyles>
       )}
