@@ -23,8 +23,22 @@ const GlobalStyles = createGlobalStyle`
 const LayoutStyles = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
-  /* grid-gap: 30px; */
-  overflow: hidden;
+  min-height: 100vh;
+
+  .main {
+    overflow: auto;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  h1,
+  h2,
+  h3,
+  p {
+    margin-bottom: 24px;
+  }
 `;
 
 const Layout = ({ children }) => (
@@ -44,7 +58,7 @@ const Layout = ({ children }) => (
         <LayoutStyles>
           <Sidebar />
 
-          <div>
+          <div className="main">
             <main>{children}</main>
             <footer />
           </div>

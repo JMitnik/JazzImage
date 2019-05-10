@@ -52,8 +52,8 @@ const Album = styled.div`
 `;
 
 const AlbumGallery = ({ albums }) => (
-  <div>
-    <h3>Albums</h3>
+  <div className="content">
+    <h1>Albums</h1>
 
     <AlbumGalleryStyles>
       {albums.map((album, index) => (

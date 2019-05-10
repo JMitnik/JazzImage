@@ -25,7 +25,7 @@ const AlbumPage = ({ data }) => {
         prevImage={prevImage}
       />
       <AlbumHeader>
-        <div>
+        <div className="content">
           <button>
             <Link to="/albums">Go back</Link>
           </button>

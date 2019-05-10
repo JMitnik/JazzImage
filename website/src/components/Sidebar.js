@@ -4,11 +4,8 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 
 const SidebarStyles = styled.div`
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 200px;
+  height: 100%;
+  width: 100%;
   text-align: center;
   display: flex;
   align-items: center;
