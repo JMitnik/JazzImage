@@ -4,7 +4,13 @@ const LayoutStyles = styled.div`
   display: grid;
   grid-template-columns: 200px auto;
 
-  .main {
+  .InnerApp {
+    display: grid;
+    align-content: space-between;
+    min-height: 100vh;
+  }
+
+  main {
     overflow: auto;
   }
 

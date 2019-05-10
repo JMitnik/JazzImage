@@ -24,7 +24,7 @@ const Layout = ({ children }) => (
         <LayoutStyles>
           <Sidebar />
 
-          <div className="main">
+          <div className="InnerApp">
             <main>{children}</main>
             <Footer />
           </div>
