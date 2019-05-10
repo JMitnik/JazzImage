@@ -1,44 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
-import Sidebar from './Sidebar/Sidebar';
-import styled from 'styled-components';
+import Sidebar from '../Sidebar/Sidebar';
+import LayoutStyles from './Layout.style';
+import GlobalStyles from '../Styles/GlobalStyles';
 
-import { createGlobalStyle } from 'styled-components';
-import Footer from './Footer/Footer';
-
-const GlobalStyles = createGlobalStyle`
-    body, *, html {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'Lora', sans-serif;
-    }
-
-    h1, h2, h3, h4 {
-        font-family: 'Lora', sans-serif;
-    }
-`;
-
-const LayoutStyles = styled.div`
-  display: grid;
-  grid-template-columns: 200px auto;
-
-  .main {
-    overflow: auto;
-  }
-
-  .content {
-    padding: 24px;
-  }
-
-  h1,
-  h2,
-  h3,
-  p {
-    margin-bottom: 24px;
-  }
-`;
+import Footer from '../Footer/Footer';
 
 const Layout = ({ children }) => (
   <div>

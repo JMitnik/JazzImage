@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../components/Layout/Layout';
+import SEO from '../components/Seo';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Lightbox from '../components/Lightbox';
