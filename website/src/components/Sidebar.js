@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
 
@@ -11,7 +10,8 @@ const SidebarStyles = styled.div`
   align-items: center;
   justify-content: center;
   border-right: 1px solid #e4e4e4;
-  background: white;
+  background: #444;
+  color: white;
 
   .active {
     font-weight: bold;
@@ -21,7 +21,7 @@ const SidebarStyles = styled.div`
     list-style: none;
 
     a {
-      color: #444;
+      color: inherit;
       text-decoration: none;
       display: block;
       margin-bottom: 24px;
@@ -47,11 +47,5 @@ const Sidebar = props => (
     </SidebarStyles>
   </div>
 );
-
-Sidebar.propTypes = {
-  test: PropTypes.string
-};
-
-Sidebar.propTypes = {};
 
 export default Sidebar;
