@@ -27,11 +27,8 @@ const Lightbox = ({ currentImage, nextImage, prevImage, cancel }) => {
           Next
         </a>
       </div>
-      <div className="inner">
-        <img
-          onClick={e => e.stopPropagation()}
-          src={`http://localhost:1337/${currentImage.url}`}
-        />
+      <div className="inner" onClick={e => e.stopPropagation()}>
+        <img src={`http://localhost:1337/${currentImage.url}`} />
       </div>
     </LightboxStyles>
   );
@@ -79,6 +76,7 @@ const LightboxStyles = styled.div`
   .inner {
     max-width: 70%;
     max-height: 100%;
+    z-index: 200;
 
     img {
       max-width: 100%;

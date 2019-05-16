@@ -19,8 +19,6 @@ DATABASE_NAME=${DATABASE_NAME:-strapi}
 DATABASE_SRV=${DATABASE_SRV:-false}
 EXTRA_ARGS=${EXTRA_ARGS:-}
 
-# Hahahahah RIP :')
-# Fuck []'s in bash :'(
 if [ ! -f "$APP_NAME/package.json" ]
 then
     echo "Let's make a project!"

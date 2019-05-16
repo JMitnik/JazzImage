@@ -9,7 +9,9 @@ import Footer from '../Footer/Footer';
 
 const Layout = ({ children }) => (
   <div>
-    <style>@import url('https://fonts.googleapis.com/css?family=Lora');</style>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+    </style>
     <StaticQuery
       query={graphql`
         query SiteTitleQuery {
