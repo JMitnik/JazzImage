@@ -3,9 +3,6 @@ import FooterStyles from './Footer.style';
 const Footer = props => (
   <FooterStyles>
     <div>Test</div>
-
-    <div />
-    <div />
   </FooterStyles>
 );
 
