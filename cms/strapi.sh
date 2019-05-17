@@ -29,7 +29,7 @@ then
     npm install --prefix ./$APP_NAME
 
     # Add final dependencies
-    npm install ./$APP_NAME axios
+    npm install ./$APP_NAME axios --save
 fi
 
 cd $APP_NAME

@@ -1,4 +1,6 @@
-'use strict';
+const axios = require('axios');
+
+('use strict');
 
 /**
  * Lifecycle callbacks for the `Album` model.
@@ -11,7 +13,10 @@ module.exports = {
 
   // After saving a value.
   // Fired after an `insert` or `update` query.
-  // afterSave: async (model, result) => {},
+  afterSave: async (model, result) => {
+    console.log(axios);
+    axios.post(`http://${process.env.FRONT_URL}/__refresh`);
+  },
 
   // Before fetching all values.
   // Fired before a `fetchAll` operation.
@@ -42,7 +47,10 @@ module.exports = {
 
   // After updating a value.
   // Fired after an `update` query.
-  // afterUpdate: async (model, result) => {},
+  afterUpdate: async (model, result) => {
+    console.log(process.env.FRONT_URL);
+    axios.post('http://website:8000/__refresh');
+  }
 
   // Before destroying a value.
   // Fired before a `delete` query.
