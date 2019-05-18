@@ -39,11 +39,12 @@ const AlbumPage = ({ data }) => {
       </AlbumHeader>
       <AlbumStyles>
         {album.photos.map((photo, index) => (
-          <a key={photo.id} className="image-wrapper">
-            <img
-              onClick={() => setImage(index)}
-              src={`http://localhost:1337/${photo.url}`}
-            />
+          <a
+            key={photo.id}
+            className="image-wrapper"
+            onClick={() => setImage(index)}
+          >
+            <Img fluid={photo.localFile.childImageSharp.thumbnail} />
           </a>
         ))}
       </AlbumStyles>
@@ -102,13 +103,24 @@ export const query = graphql`
         createdAt
         photos {
           id
-          url
+          localFile {
+            childImageSharp {
+              thumbnail: fluid(maxWidth: 400) {
+                ...GatsbyImageSharpFluid
+              }
+              full: fluid {
+                ...GatsbyImageSharpFluid
+              }
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
         coverPhoto {
           childImageSharp {
             fluid(maxWidth: 1400, maxHeight: 900) {
-              tracedSVG
-              srcSet
+              ...GatsbyImageSharpFluid
             }
           }
         }

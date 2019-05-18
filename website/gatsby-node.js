@@ -1,4 +1,26 @@
 const path = require('path');
+const { createRemoteFileNode } = require('gatsby-source-filesystem');
+
+exports.onCreateNode = async ({ node, actions, store, cache }) => {
+  const { createNode, createNodeField } = actions;
+
+  if (node.internal.type !== null && node.internal.type === 'StrapiAlbum') {
+    for (const image of node.photos) {
+      console.log(image);
+      const fileNode = await createRemoteFileNode({
+        url: 'http://cms:1337' + image.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => image.id
+      });
+
+      if (fileNode) {
+        image.localFile___NODE = fileNode.id;
+      }
+    }
+  }
+};
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;

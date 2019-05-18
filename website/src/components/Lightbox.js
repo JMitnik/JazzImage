@@ -1,4 +1,5 @@
 import React from 'react';
+import Img from 'gatsby-image';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
@@ -28,7 +29,7 @@ const Lightbox = ({ currentImage, nextImage, prevImage, cancel }) => {
         </a>
       </div>
       <div className="inner" onClick={e => e.stopPropagation()}>
-        <img src={`http://localhost:1337/${currentImage.url}`} />
+        <Img fluid={currentImage.localFile.childImageSharp.full} />
       </div>
     </LightboxStyles>
   );
@@ -75,11 +76,13 @@ const LightboxStyles = styled.div`
 
   .inner {
     max-width: 70%;
-    max-height: 100%;
-    z-index: 200;
+    width: 70%;
+    margin: 0 auto;
+    height: 70%;
 
     img {
-      max-width: 100%;
+      width: 100%;
+      height: auto;
     }
   }
 `;
