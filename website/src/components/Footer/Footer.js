@@ -1,8 +1,9 @@
 import React from 'react';
 import FooterStyles from './Footer.style';
+
 const Footer = props => (
   <FooterStyles>
-    <div>Test</div>
+    <div>Test123</div>
   </FooterStyles>
 );
 

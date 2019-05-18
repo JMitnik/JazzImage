@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
+import Button from '../components/Button/Button';
 import Layout from '../components/Layout/Layout';
+import ArrowLeft from '../images/icons/arrow-left-circle.svg';
 import SEO from '../components/Seo';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -25,9 +27,12 @@ const AlbumPage = ({ data }) => {
       />
       <AlbumHeader>
         <div className="content">
-          <button>
-            <Link to="/albums">Go back</Link>
-          </button>
+          <Button>
+            <Link to="/albums">
+              <ArrowLeft />
+              Go back
+            </Link>
+          </Button>
           <h2>{album.Title}</h2>
         </div>
         <Img fluid={album.coverPhoto.childImageSharp.fluid} />
@@ -72,6 +77,13 @@ const AlbumStyles = styled.div`
   .image-wrapper {
     display: block;
     max-width: 100%;
+    box-shadow: none;
+
+    &:hover {
+      cursor: pointer;
+      transition: all 2s ease-in;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
+    }
   }
   img {
     width: 100%;
