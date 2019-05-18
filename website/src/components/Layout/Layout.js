@@ -4,6 +4,8 @@ import { StaticQuery, graphql } from 'gatsby';
 import Sidebar from '../Sidebar/Sidebar';
 import LayoutStyles from './Layout.style';
 import GlobalStyles from '../Styles/GlobalStyles';
+import AppTheme from '../Styles/AppTheme';
+import { ThemeProvider } from 'styled-components';
 
 import Footer from '../Footer/Footer';
 
@@ -23,14 +25,16 @@ const Layout = ({ children }) => (
         }
       `}
       render={data => (
-        <LayoutStyles>
-          <Sidebar />
+        <ThemeProvider theme={AppTheme}>
+          <LayoutStyles>
+            <Sidebar />
 
-          <div className="InnerApp">
-            <main>{children}</main>
-            <Footer />
-          </div>
-        </LayoutStyles>
+            <div className="InnerApp">
+              <main>{children}</main>
+              <Footer />
+            </div>
+          </LayoutStyles>
+        </ThemeProvider>
       )}
     />
     <GlobalStyles />
