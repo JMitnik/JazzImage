@@ -71,10 +71,17 @@ const AlbumHeader = styled.header`
 const AlbumStyles = styled.div`
   display: grid;
   background: #f1f1f1;
-  padding: 100px;
+
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
 
+  @media (min-width: 700px) {
+    padding: 100px;
+  }
+
+  @media (max-width: 700px) {
+    padding: 12px;
+  }
   .image-wrapper {
     display: block;
     max-width: 100%;
