@@ -46,7 +46,10 @@ const LightboxStyles = styled.div`
   display: block;
   background: rgba(0, 0, 0, 0.7);
   position: fixed;
-  inset: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  top: 0px;
   z-index: 200;
   display: flex;
   align-items: center;
@@ -54,7 +57,10 @@ const LightboxStyles = styled.div`
 
   .controls {
     position: absolute;
-    inset: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    top: 0px;
 
     .prev,
     .next {
