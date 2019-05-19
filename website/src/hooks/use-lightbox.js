@@ -3,11 +3,21 @@ import React, { useEffect, useState } from 'react';
 const useLightbox = images => {
   const [currentImageIndex, setCurrentImageIndex] = useState(null);
 
-  const nextImage = () =>
-    setCurrentImageIndex(Math.min(images.length - 1, currentImageIndex + 1));
+  const nextImage = () => {
+    if (currentImageIndex + 1 >= images.length) {
+      return setCurrentImageIndex(0);
+    }
 
-  const prevImage = () =>
-    setCurrentImageIndex(Math.max(0, currentImageIndex - 1));
+    return setCurrentImageIndex(currentImageIndex + 1);
+  };
+
+  const prevImage = () => {
+    if (currentImageIndex - 1 > 0) {
+      return setCurrentImageIndex(currentImageIndex - 1);
+    }
+
+    return setCurrentImageIndex(images.length - 1);
+  };
 
   const cancel = () => setCurrentImageIndex(null);
 

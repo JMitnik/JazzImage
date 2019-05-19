@@ -82,9 +82,15 @@ const LightboxStyles = styled.div`
 
   .inner {
     max-width: 70%;
-    width: 70%;
+    width: 800px;
     margin: 0 auto;
-    height: 70%;
+    display: flex;
+    max-height: 90%;
+
+    > div {
+      width: 100%;
+      height: auto;
+    }
 
     img {
       width: 100%;
