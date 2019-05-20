@@ -1,8 +1,10 @@
 const AppTheme = {
+  containerWidth: null,
   colors: {},
   fonts: {}
 };
 
+AppTheme.containerWidth = '1200px';
 AppTheme.colors.primary = '#d4fefe';
 AppTheme.colors.secondary = '#444';
 AppTheme.colors.white = 'white';

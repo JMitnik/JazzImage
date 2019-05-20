@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
+    html {
+        font-size: 0.9vw;
+    }
+
     body, *, html {
         box-sizing: border-box;
         margin: 0;

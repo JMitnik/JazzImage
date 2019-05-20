@@ -21,7 +21,7 @@ const HeroStyles = styled.section`
   .content {
     width: 40%;
     position: relative;
-    padding: 100px;
+    padding: 5%;
     display: flex;
     align-items: space-between;
     justify-content: flex-end;
