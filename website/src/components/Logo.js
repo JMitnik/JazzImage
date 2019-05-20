@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LogoStyles = styled.span`
   display: flex;
   width: auto;
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   align-items: center;
   flex-wrap: nowrap;
   font-family: 'Merriweather', serif;
@@ -32,4 +32,5 @@ const Logo = () => (
     <h1>JazzImage</h1>
   </LogoStyles>
 );
+
 export default Logo;

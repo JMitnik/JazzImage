@@ -36,4 +36,15 @@ const Button = styled.button`
   }
 `;
 
+const OutlinedButton = styled(Button)`
+  background: transparent;
+  border: 3px solid #8795a1;
+  border-radius: 5px;
+
+  a {
+    color: #8795a1;
+  }
+`;
+
 export default Button;
+export { OutlinedButton };

@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "",
+  "info": {
+    "name": "about",
+    "description": ""
+  },
+  "options": {
+    "timestamps": true
+  },
+  "attributes": {
+    "portrait": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
+    },
+    "fullText": {
+      "default": "",
+      "type": "text"
+    },
+    "introduction": {
+      "default": "",
+      "type": "text"
+    }
+  }
+}

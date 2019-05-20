@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import Container from '../Container';
 
 const FooterStyles = styled.footer`
-  background: #444;
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  background: #1f2122;
   color: white;
-  padding: 24px;
+  padding: 48px 0;
+
+  ${Container} {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+  }
 
   svg {
     fill: white;

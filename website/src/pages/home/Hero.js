@@ -1,78 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import { Link } from 'gatsby';
 import ArrowRight from '../../images/icons/arrow-right-circle.svg';
-import HeroBG from '../../images/hero-bg.jpg';
+import HeroStyles from './Hero.style';
 import Logo from '../../components/Logo';
-
-const HeroStyles = styled.section`
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-
-  .image {
-    background-image: url(${HeroBG});
-    background-position: center right;
-    background-repeat: no-repeat;
-    background-size: cover;
-    width: 60%;
-  }
-
-  .content {
-    width: 40%;
-    position: relative;
-    padding: 5%;
-    display: flex;
-    align-items: space-between;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-
-    .bottom {
-      width: 100%;
-      display: flex;
-      align-items: flex-end;
-
-      .nav-bottom {
-        width: 100%;
-        max-width: 500px;
-        margin: 0 auto;
-      }
-
-      nav {
-        ul {
-          list-style: none;
-          display: flex;
-          justify-content: space-between;
-        }
-
-        a {
-          font-size: 1.2rem;
-          font-weight: bold;
-          color: #606f7b;
-          text-decoration: none;
-
-          span {
-            display: inline-block;
-            margin-right: 4px;
-          }
-
-          svg {
-            vertical-align: middle;
-            max-width: 15px;
-          }
-        }
-      }
-
-      hr {
-        width: 100%;
-        background: #dae1e7;
-        border: 0;
-        height: 1px;
-        margin-bottom: 24px;
-      }
-    }
-  }
-`;
 
 const Heading = styled.h1`
   font-size: 3.5rem;
@@ -92,9 +24,14 @@ const Subheading = styled.h2`
   font-weight: 100;
 `;
 
-const Hero = () => (
+const Hero = ({ photos }) => (
   <HeroStyles>
-    <div className="image" />
+    <div className="image">
+      <Img
+        objectPosition="bottom"
+        fluid={photos[0].localFile.childImageSharp.fluid}
+      />
+    </div>
     <div className="content">
       <div className="top">
         <Heading>

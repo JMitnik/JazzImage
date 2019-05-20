@@ -1,58 +1,29 @@
 import React from 'react';
 import Container from '../../components/Container';
-import Portrait from '../../images/portrait.jpg';
+import { OutlinedButton } from '../../components/Button/Button';
+import { Link } from 'gatsby';
 import VerticalTimeline from './VerticalTimeline';
+import Img from 'gatsby-image';
 import AboutStyles from './About.style';
 
-const About = () => (
-  <Container>
-    <AboutStyles>
-      <div className="left">
-        <h2>About</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          culpa totam, odit similique sint earum provident, fugit corporis
-          facere, veniam aliquam? Amet deleniti laborum ratione nihil
-          accusantium cum mollitia incidunt rerum voluptatum numquam
-          reprehenderit culpa, accusamus eaque repudiandae, inventore, adipisci
-          doloribus asperiores quam eveniet sequi labore officiis voluptatibus
-          neque? Quia!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          culpa totam, odit similique sint earum provident, fugit corporis
-          facere, veniam aliquam? Amet deleniti laborum ratione nihil
-          accusantium cum mollitia incidunt rerum voluptatum numquam
-          reprehenderit culpa, accusamus eaque repudiandae, inventore, adipisci
-          doloribus asperiores quam eveniet sequi labore officiis voluptatibus
-          neque? Quia!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          culpa totam, odit similique sint earum provident, fugit corporis
-          facere, veniam aliquam? Amet deleniti laborum ratione nihil
-          accusantium cum mollitia incidunt rerum voluptatum numquam
-          reprehenderit culpa, accusamus eaque repudiandae, inventore, adipisci
-          doloribus asperiores quam eveniet sequi labore officiis voluptatibus
-          neque? Quia!
-        </p>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio
-          culpa totam, odit similique sint earum provident, fugit corporis
-          facere, veniam aliquam? Amet deleniti laborum ratione nihil
-          accusantium cum mollitia incidunt rerum voluptatum numquam
-          reprehenderit culpa, accusamus eaque repudiandae, inventore, adipisci
-          doloribus asperiores quam eveniet sequi labore officiis voluptatibus
-          neque? Quia!
-        </p>
-      </div>
+const About = ({ data }) => (
+  <AboutStyles>
+    <Container>
       <div className="right">
-        <img width="100px" src={Portrait} />
-        <VerticalTimeline />
+        <Img fixed={data.portrait.childImageSharp.fixed} />
       </div>
-      <div />
-    </AboutStyles>
-  </Container>
+
+      <div className="content">
+        <h2>About</h2>
+        <h3 className="intro">{data.introduction}</h3>
+        <div style={{ textAlign: 'right' }}>
+          <OutlinedButton>
+            <Link to="/albums">Read more</Link>
+          </OutlinedButton>
+        </div>
+      </div>
+    </Container>
+  </AboutStyles>
 );
 
 About.propTypes = {};

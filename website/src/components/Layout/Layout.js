@@ -14,7 +14,7 @@ const Layout = ({ children }) => (
     <style>
       @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
       @import
-      url('https://fonts.googleapis.com/css?family=Merriweather:300,400,900i&display=swap');
+      url('https://fonts.googleapis.com/css?family=Merriweather:100,300,400,900i&display=swap');
       2{' '}
     </style>
     <StaticQuery

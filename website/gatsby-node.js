@@ -6,7 +6,36 @@ exports.onCreateNode = async ({ node, actions, store, cache }) => {
 
   if (node.internal.type !== null && node.internal.type === 'StrapiAlbum') {
     for (const image of node.photos) {
-      console.log(image);
+      const fileNode = await createRemoteFileNode({
+        url: 'http://cms:1337' + image.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => image.id
+      });
+
+      if (fileNode) {
+        image.localFile___NODE = fileNode.id;
+      }
+    }
+  }
+
+  if (node.internal.type !== null && node.internal.type === 'StrapiHomepage') {
+    for (const headerImage of node.headerImages) {
+      const fileNode = await createRemoteFileNode({
+        url: 'http://cms:1337' + headerImage.url,
+        store,
+        cache,
+        createNode,
+        createNodeId: id => headerImage.id
+      });
+
+      if (fileNode) {
+        headerImage.localFile___NODE = fileNode.id;
+      }
+    }
+
+    for (const image of node.album.photos) {
       const fileNode = await createRemoteFileNode({
         url: 'http://cms:1337' + image.url,
         store,

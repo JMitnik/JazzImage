@@ -5,7 +5,8 @@ const AppTheme = {
 };
 
 AppTheme.containerWidth = '1200px';
-AppTheme.colors.primary = '#d4fefe';
+AppTheme.colors.primary = '#22292F';
+AppTheme.colors.primaryText = '#B8C2CC';
 AppTheme.colors.secondary = '#444';
 AppTheme.colors.white = 'white';
 AppTheme.colors.black = '#030303';

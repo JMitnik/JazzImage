@@ -68,38 +68,6 @@ const AlbumHeader = styled.header`
   }
 `;
 
-const AlbumStyles = styled.div`
-  display: grid;
-  background: #f1f1f1;
-
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 50px;
-
-  @media (min-width: 700px) {
-    padding: 100px;
-  }
-
-  @media (max-width: 700px) {
-    padding: 12px;
-  }
-  .image-wrapper {
-    display: block;
-    max-width: 100%;
-    box-shadow: none;
-
-    &:hover {
-      cursor: pointer;
-      transition: all 2s ease-in;
-      box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0;
-    }
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
 export default AlbumPage;
 export const query = graphql`
   query GetPhotos($id: String) {

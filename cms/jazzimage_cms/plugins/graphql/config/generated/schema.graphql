@@ -1,3 +1,67 @@
+type About {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  portrait: UploadFile
+  fullText: String
+  introduction: String
+}
+
+type AboutAggregator {
+  count: Int
+}
+
+type AboutConnection {
+  values: [About]
+  groupBy: AboutGroupBy
+  aggregate: AboutAggregator
+}
+
+type AboutConnection_id {
+  key: ID
+  connection: AboutConnection
+}
+
+type AboutConnectionCreatedAt {
+  key: DateTime
+  connection: AboutConnection
+}
+
+type AboutConnectionFullText {
+  key: String
+  connection: AboutConnection
+}
+
+type AboutConnectionIntroduction {
+  key: String
+  connection: AboutConnection
+}
+
+type AboutConnectionPortrait {
+  key: ID
+  connection: AboutConnection
+}
+
+type AboutConnectionUpdatedAt {
+  key: DateTime
+  connection: AboutConnection
+}
+
+type AboutGroupBy {
+  _id: [AboutConnection_id]
+  createdAt: [AboutConnectionCreatedAt]
+  updatedAt: [AboutConnectionUpdatedAt]
+  portrait: [AboutConnectionPortrait]
+  fullText: [AboutConnectionFullText]
+  introduction: [AboutConnectionIntroduction]
+}
+
+input AboutInput {
+  portrait: ID
+  fullText: String
+  introduction: String
+}
+
 type Album {
   _id: ID!
   createdAt: DateTime!
@@ -56,12 +120,28 @@ input AlbumInput {
   coverPhoto: ID
 }
 
+input createAboutInput {
+  data: AboutInput
+}
+
+type createAboutPayload {
+  about: About
+}
+
 input createAlbumInput {
   data: AlbumInput
 }
 
 type createAlbumPayload {
   album: Album
+}
+
+input createHomepageInput {
+  data: HomepageInput
+}
+
+type createHomepagePayload {
+  homepage: Homepage
 }
 
 input createRoleInput {
@@ -85,12 +165,28 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
+input deleteAboutInput {
+  where: InputID
+}
+
+type deleteAboutPayload {
+  about: About
+}
+
 input deleteAlbumInput {
   where: InputID
 }
 
 type deleteAlbumPayload {
   album: Album
+}
+
+input deleteHomepageInput {
+  where: InputID
+}
+
+type deleteHomepagePayload {
+  homepage: Homepage
 }
 
 input deleteRoleInput {
@@ -107,6 +203,12 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editAboutInput {
+  portrait: ID
+  fullText: String
+  introduction: String
 }
 
 input editAlbumInput {
@@ -126,6 +228,11 @@ input editFileInput {
   provider: String
   public_id: String
   related: [ID]
+}
+
+input editHomepageInput {
+  headerImages: [ID]
+  album: ID
 }
 
 input editRoleInput {
@@ -160,6 +267,56 @@ input FileInput {
   related: [ID]
 }
 
+type Homepage {
+  _id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  album: Album
+  headerImages(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
+}
+
+type HomepageAggregator {
+  count: Int
+}
+
+type HomepageConnection {
+  values: [Homepage]
+  groupBy: HomepageGroupBy
+  aggregate: HomepageAggregator
+}
+
+type HomepageConnection_id {
+  key: ID
+  connection: HomepageConnection
+}
+
+type HomepageConnectionAlbum {
+  key: ID
+  connection: HomepageConnection
+}
+
+type HomepageConnectionCreatedAt {
+  key: DateTime
+  connection: HomepageConnection
+}
+
+type HomepageConnectionUpdatedAt {
+  key: DateTime
+  connection: HomepageConnection
+}
+
+type HomepageGroupBy {
+  _id: [HomepageConnection_id]
+  createdAt: [HomepageConnectionCreatedAt]
+  updatedAt: [HomepageConnectionUpdatedAt]
+  album: [HomepageConnectionAlbum]
+}
+
+input HomepageInput {
+  headerImages: [ID]
+  album: ID
+}
+
 input InputID {
   id: ID!
 }
@@ -169,12 +326,18 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Album | createAlbumPayload | updateAlbumPayload | deleteAlbumPayload | AlbumConnection | AlbumAggregator | AlbumGroupBy | AlbumConnection_id | AlbumConnectionCreatedAt | AlbumConnectionUpdatedAt | AlbumConnectionTitle | AlbumConnectionCoverPhoto | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | About | createAboutPayload | updateAboutPayload | deleteAboutPayload | AboutConnection | AboutAggregator | AboutGroupBy | AboutConnection_id | AboutConnectionCreatedAt | AboutConnectionUpdatedAt | AboutConnectionPortrait | AboutConnectionFullText | AboutConnectionIntroduction | Album | createAlbumPayload | updateAlbumPayload | deleteAlbumPayload | AlbumConnection | AlbumAggregator | AlbumGroupBy | AlbumConnection_id | AlbumConnectionCreatedAt | AlbumConnectionUpdatedAt | AlbumConnectionTitle | AlbumConnectionCoverPhoto | Homepage | createHomepagePayload | updateHomepagePayload | deleteHomepagePayload | HomepageConnection | HomepageAggregator | HomepageGroupBy | HomepageConnection_id | HomepageConnectionCreatedAt | HomepageConnectionUpdatedAt | HomepageConnectionAlbum | UploadFile | UploadFileConnection | UploadFileAggregator | UploadFileGroupBy | UploadFileConnection_id | UploadFileConnectionCreatedAt | UploadFileConnectionUpdatedAt | UploadFileConnectionName | UploadFileConnectionHash | UploadFileConnectionSha256 | UploadFileConnectionExt | UploadFileConnectionMime | UploadFileConnectionSize | UploadFileConnectionUrl | UploadFileConnectionProvider | UploadFileConnectionPublic_id | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsRoleConnection | UsersPermissionsRoleAggregator | UsersPermissionsRoleGroupBy | UsersPermissionsRoleConnection_id | UsersPermissionsRoleConnectionName | UsersPermissionsRoleConnectionDescription | UsersPermissionsRoleConnectionType | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload | UsersPermissionsUserConnection | UsersPermissionsUserAggregator | UsersPermissionsUserGroupBy | UsersPermissionsUserConnection_id | UsersPermissionsUserConnectionUsername | UsersPermissionsUserConnectionEmail | UsersPermissionsUserConnectionProvider | UsersPermissionsUserConnectionConfirmed | UsersPermissionsUserConnectionBlocked | UsersPermissionsUserConnectionRole
 
 type Mutation {
+  createAbout(input: createAboutInput): createAboutPayload
+  updateAbout(input: updateAboutInput): updateAboutPayload
+  deleteAbout(input: deleteAboutInput): deleteAboutPayload
   createAlbum(input: createAlbumInput): createAlbumPayload
   updateAlbum(input: updateAlbumInput): updateAlbumPayload
   deleteAlbum(input: deleteAlbumInput): deleteAlbumPayload
+  createHomepage(input: createHomepageInput): createHomepagePayload
+  updateHomepage(input: updateHomepageInput): updateHomepagePayload
+  deleteHomepage(input: deleteHomepageInput): deleteHomepagePayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -197,9 +360,15 @@ type Mutation {
 }
 
 type Query {
+  about(id: ID!): About
+  abouts(sort: String, limit: Int, start: Int, where: JSON): [About]
+  aboutsConnection(sort: String, limit: Int, start: Int, where: JSON): AboutConnection
   album(id: ID!): Album
   albums(sort: String, limit: Int, start: Int, where: JSON): [Album]
   albumsConnection(sort: String, limit: Int, start: Int, where: JSON): AlbumConnection
+  homepage(id: ID!): Homepage
+  homepages(sort: String, limit: Int, start: Int, where: JSON): [Homepage]
+  homepagesConnection(sort: String, limit: Int, start: Int, where: JSON): HomepageConnection
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   filesConnection(sort: String, limit: Int, start: Int, where: JSON): UploadFileConnection
   role(id: ID!): UsersPermissionsRole
@@ -223,6 +392,15 @@ input RoleInput {
   users: [ID]
 }
 
+input updateAboutInput {
+  where: InputID
+  data: editAboutInput
+}
+
+type updateAboutPayload {
+  about: About
+}
+
 input updateAlbumInput {
   where: InputID
   data: editAlbumInput
@@ -230,6 +408,15 @@ input updateAlbumInput {
 
 type updateAlbumPayload {
   album: Album
+}
+
+input updateHomepageInput {
+  where: InputID
+  data: editHomepageInput
+}
+
+type updateHomepagePayload {
+  homepage: Homepage
 }
 
 input updateRoleInput {

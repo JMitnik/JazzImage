@@ -18,7 +18,7 @@ module.exports = {
       options: {
         apiURL: `http://${process.env.API_URL}`,
         queryLimit: 100, // Default to 0
-        contentTypes: ['album', 'user']
+        contentTypes: ['album', 'user', 'homepage', 'about']
       }
     },
     'gatsby-plugin-transition-link',
