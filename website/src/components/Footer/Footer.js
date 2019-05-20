@@ -1,8 +1,11 @@
 import React from 'react';
 import FooterStyles from './Footer.style';
+import CameraIcon from '../../images/icons/camera-icon.svg';
+import Logo from '../Logo';
 
-const Footer = props => (
+const Footer = () => (
   <FooterStyles>
+    <Logo />
     <div>Test123</div>
   </FooterStyles>
 );

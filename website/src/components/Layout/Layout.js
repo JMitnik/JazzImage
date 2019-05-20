@@ -13,6 +13,9 @@ const Layout = ({ children }) => (
   <div>
     <style>
       @import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+      @import
+      url('https://fonts.googleapis.com/css?family=Merriweather:300,400,900i&display=swap');
+      2{' '}
     </style>
     <StaticQuery
       query={graphql`
@@ -27,7 +30,7 @@ const Layout = ({ children }) => (
       render={data => (
         <ThemeProvider theme={AppTheme}>
           <LayoutStyles>
-            <Sidebar />
+            {/* <Sidebar /> */}
 
             <div className="InnerApp">
               <main>{children}</main>
