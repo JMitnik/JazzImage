@@ -18,7 +18,7 @@ const About = ({ data }) => (
         <h3 className="intro">{data.introduction}</h3>
         <div style={{ textAlign: 'right' }}>
           <OutlinedButton>
-            <Link to="/albums">Read more</Link>
+            <Link to="/about">Read more</Link>
           </OutlinedButton>
         </div>
       </div>

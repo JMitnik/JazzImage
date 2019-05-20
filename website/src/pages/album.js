@@ -3,8 +3,10 @@ import { graphql, Link } from 'gatsby';
 import Img from 'gatsby-image';
 import Button from '../components/Button/Button';
 import Layout from '../components/Layout/Layout';
+import Gallery from '../components/Gallery';
 import ArrowLeft from '../images/icons/arrow-left-circle.svg';
 import SEO from '../components/Seo';
+import Container from '../components/Container';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Lightbox from '../components/Lightbox';
@@ -13,18 +15,8 @@ import useLightbox from '../hooks/use-lightbox';
 const AlbumPage = ({ data }) => {
   const album = data.allStrapiAlbum.nodes[0];
 
-  const { currentImage, setImage, nextImage, cancel, prevImage } = useLightbox(
-    album.photos
-  );
-
   return (
     <Layout>
-      <Lightbox
-        currentImage={currentImage}
-        nextImage={nextImage}
-        cancel={cancel}
-        prevImage={prevImage}
-      />
       <AlbumHeader>
         <div className="content">
           <Button>
@@ -37,17 +29,9 @@ const AlbumPage = ({ data }) => {
         </div>
         <Img fluid={album.coverPhoto.childImageSharp.fluid} />
       </AlbumHeader>
-      <AlbumStyles>
-        {album.photos.map((photo, index) => (
-          <a
-            key={photo.id}
-            className="image-wrapper"
-            onClick={() => setImage(index)}
-          >
-            <Img fluid={photo.localFile.childImageSharp.thumbnail} />
-          </a>
-        ))}
-      </AlbumStyles>
+      <Container>
+        <Gallery photos={album.photos} />
+      </Container>
     </Layout>
   );
 };

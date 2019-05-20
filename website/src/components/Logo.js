@@ -34,3 +34,4 @@ const Logo = () => (
 );
 
 export default Logo;
+export { LogoStyles };

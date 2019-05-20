@@ -2,6 +2,8 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout/Layout';
 import AlbumGallery from './albums/AlbumGallery';
+import Headerbar from '../components/Headerbar';
+import Container from '../components/Container';
 
 const AlbumGalleryPage = ({ data }) => {
   let albums = [];
@@ -12,7 +14,10 @@ const AlbumGalleryPage = ({ data }) => {
 
   return (
     <Layout>
-      <AlbumGallery albums={albums} />
+      <Headerbar />
+      <Container>
+        <AlbumGallery albums={albums} />
+      </Container>
     </Layout>
   );
 };
