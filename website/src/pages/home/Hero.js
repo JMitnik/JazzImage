@@ -7,7 +7,7 @@ import HeroStyles from './Hero.style';
 import Logo from '../../components/Logo';
 
 const Heading = styled.h1`
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   color: ${props => props.theme.colors.textColor};
   fill: ${props => props.theme.colors.textColor};
   padding-bottom: 12px;
