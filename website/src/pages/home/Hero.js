@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
+import ArrowRight from '../../images/icons/arrow-right-circle.svg';
 import HeroBG from '../../images/hero-bg.jpg';
 import Logo from '../../components/Logo';
 
@@ -45,9 +46,20 @@ const HeroStyles = styled.section`
         }
 
         a {
-          font-weight: 1000;
+          font-size: 1.2rem;
+          font-weight: bold;
           color: #606f7b;
           text-decoration: none;
+
+          span {
+            display: inline-block;
+            margin-right: 4px;
+          }
+
+          svg {
+            vertical-align: middle;
+            max-width: 15px;
+          }
         }
       }
 
@@ -98,13 +110,22 @@ const Hero = () => (
           <nav>
             <ul>
               <li>
-                <Link to="/albums">Gallery</Link>
+                <Link to="/albums">
+                  <span>Gallery</span>
+                  <ArrowRight />
+                </Link>
               </li>
               <li>
-                <Link to="/albums">Services</Link>
+                <Link to="/albums">
+                  <span>Services</span>
+                  <ArrowRight />
+                </Link>
               </li>
               <li>
-                <Link to="/albums">Contact</Link>
+                <Link to="/albums">
+                  <span>Contact</span>
+                  <ArrowRight />
+                </Link>
               </li>
             </ul>
           </nav>
